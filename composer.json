@@ -1,0 +1,12 @@
+{
+  "require": {
+    "php": "7.4.*",
+    "ext-json": "*",
+    "symfony/var-dumper": "5.4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Examples\\" : "Examples"
+    }
+  }
+}
