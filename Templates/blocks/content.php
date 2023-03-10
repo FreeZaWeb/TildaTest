@@ -33,8 +33,8 @@ echo $stepWidget->render();
 
         <h3>Клиентский код:</h3>
         <pre><code class="language-php">
-use Examples\StepWidget\StepWidget;
-use Examples\StepWidget\StepWidgetRenderHtml;
+use Examples\RandomTable\RandomTable;
+use Examples\RandomTable\TableSummatorWidget;
 
 $RandRange = new RandomRangeFromMinToMax(0, 1000);
 $tableBuilder = new RandomTable();
