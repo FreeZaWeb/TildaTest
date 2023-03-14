@@ -20,6 +20,9 @@ class TableSummatorWidget{
         foreach ($this->array as $rowIndex => $row){
             $this->rowsSum[$rowIndex] = 0;
             foreach ($row as $columnIndex => $column){
+                if(!isset($this->columnsSum[$columnIndex])){
+                    $this->columnsSum[$columnIndex] = 0;
+                }
                 $this->rowsSum[$rowIndex]+= (int) $column;
                 $this->columnsSum[$columnIndex]+= (int) $column;
             }
