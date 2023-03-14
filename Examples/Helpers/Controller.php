@@ -37,7 +37,7 @@ class Controller{
         $table = $tableBuilder
             ->setRowsSize(5)
             ->setColumnsSize(7)
-            ->generateNumbers($RandRange->getVector());
+            ->generateUniqueNumbers($RandRange->getVector());
 
 
         $viewData['randomTable'] = (new TableSummatorWidget($table))->getView();

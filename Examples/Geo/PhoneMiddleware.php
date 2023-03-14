@@ -19,7 +19,7 @@ class PhoneMiddleware{
 
 
 
-        $phoneDigits = (new GeoApi(new customApiHandler()))->getCityPhoneByIp($ip);
+        $phoneDigits = (new GeoApi(new plugApiHandler()))->getCityPhoneByIp($ip);
 
         View::getInstance()->regReplacement('DIGITS', $phoneDigits);
 

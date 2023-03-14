@@ -11,7 +11,7 @@ class View{
     private array $replacementData = [];
     private array $controllerData = [];
 
-
+    
     public static function getInstance(){
 
         if(self::$_instance == null){
@@ -34,8 +34,6 @@ class View{
         }
     }
 
-
-
     public function setData($data){
         $this->controllerData = $data;
     }
@@ -45,16 +43,10 @@ class View{
     }
 
     private function replaceFromData(array $data, string $tagStart = '', string $tagEnd = ''){
-
-
-
         foreach ($data as $tag => $value){
             $this->template = str_replace($tagStart.$tag.$tagEnd, $value, $this->template);
         }
     }
-
-
-
 
     public function render(){
         $this->replaceFromData($this->controllerData, '{{', '}}');

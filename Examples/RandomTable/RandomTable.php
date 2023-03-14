@@ -22,16 +22,30 @@ class RandomTable{
 
     public function generateNumbers(Vector $vector) : array{
 
-        $table = [];
-
         for($row=0; $row < $this->rowsSize; $row++){
             for($column=0; $column < $this->columnsSize; $column++){
                 $table[$row][$column] = mt_rand($vector->getX(),$vector->getY());
             }
         }
 
-        return $table;
+        return $table ?? [];
 
+    }
+
+    public function generateUniqueNumbers(Vector $vector) : array{
+
+        $uniqueArrayChecker = new UniqueArrayDataChecker();
+
+        for($row=0; $row < $this->rowsSize; $row++){
+            for($column=0; $column < $this->columnsSize; $column++){
+                $table[$row][$column] = $uniqueArrayChecker
+                    ->generateUniqueValue($uniqueArrayChecker, function ($vector){
+                        return mt_rand($vector->getX(),$vector->getY());
+                    },[$vector]);
+            }
+        }
+
+        return $table ?? [];
     }
 
 }
