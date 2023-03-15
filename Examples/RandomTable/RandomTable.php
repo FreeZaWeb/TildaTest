@@ -21,7 +21,9 @@ class RandomTable{
         return $this;
     }
 
-    public function generateNumbers(Vector $vector) : array{
+    public function generateNumbers(RandomRangeFromMinToMax $range) : array{
+
+        $vector = $range->getVector();
 
         for($row=0; $row < $this->rowsSize; $row++){
             for($column=0; $column < $this->columnsSize; $column++){
@@ -33,8 +35,9 @@ class RandomTable{
 
     }
 
-    public function generateUniqueNumbers(Vector $vector) : array{
+    public function generateUniqueNumbers(RandomRangeFromMinToMax $range) : array{
 
+        $vector = $range->getVector();
         $uniqueArrayChecker = new UniqueArrayDataChecker();
 
         if(!$this->compareValidVectorByTableSize($vector)){

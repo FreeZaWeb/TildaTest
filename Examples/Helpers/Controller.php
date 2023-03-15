@@ -31,13 +31,12 @@ class Controller{
         $stepWidget = (new StepWidget())->setMaxNumber(100)->setRenderHandler(new StepWidgetRenderJson());
         $viewData['stepWidgetJSON'] = $stepWidget->render();
 
-        $RandRange = new RandomRangeFromMinToMax(0, 1000);
         $tableBuilder = new RandomTable();
 
         $table = $tableBuilder
             ->setRowsSize(5)
             ->setColumnsSize(7)
-            ->generateUniqueNumbers($RandRange->getVector());
+            ->generateUniqueNumbers(new RandomRangeFromMinToMax(0, 1000));
 
 
         $viewData['randomTable'] = (new TableSummatorWidget($table))->getView();
