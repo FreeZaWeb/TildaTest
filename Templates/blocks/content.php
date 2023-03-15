@@ -36,13 +36,12 @@ echo $stepWidget->render();
 use Examples\RandomTable\RandomTable;
 use Examples\RandomTable\TableSummatorWidget;
 
-$RandRange = new RandomRangeFromMinToMax(0, 1000);
 $tableBuilder = new RandomTable();
 
 $table = $tableBuilder
     ->setRowsSize(5)
     ->setColumnsSize(7)
-    ->generateNumbers($RandRange->getVector());
+    ->generateNumbers(new RandomRangeFromMinToMax(0, 1000));
 
 echo (new TableSummatorWidget($table))->getView();
 </code></pre>
