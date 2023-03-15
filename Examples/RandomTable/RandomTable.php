@@ -2,6 +2,7 @@
 
 namespace Examples\RandomTable;
 
+use Examples\Helpers\RandomRangeFromMinToMax;
 use Examples\Helpers\Vector;
 
 class RandomTable{
@@ -36,6 +37,10 @@ class RandomTable{
 
         $uniqueArrayChecker = new UniqueArrayDataChecker();
 
+        if(!$this->compareValidVectorByTableSize($vector)){
+            throw new \Exception('Range Vector for unique values is less table size');
+        }
+
         for($row=0; $row < $this->rowsSize; $row++){
             for($column=0; $column < $this->columnsSize; $column++){
                 $table[$row][$column] = $uniqueArrayChecker
@@ -47,5 +52,10 @@ class RandomTable{
 
         return $table ?? [];
     }
+
+    private function compareValidVectorByTableSize(Vector $vector) : bool{
+        return $this->columnsSize * $this->rowsSize < $vector->getY() - $vector->getX();
+    }
+
 
 }
