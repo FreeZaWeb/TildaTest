@@ -9,7 +9,6 @@ class RandomTable{
 
     private int $rowsSize = 0;
     private int $columnsSize = 0;
-    private Vector $randVector;
 
     public function setRowsSize(int $size){
         $this->rowsSize = $size;
@@ -35,17 +34,27 @@ class RandomTable{
 
     }
 
-    /*
+    public function generateUniqueNumbersByRange($min=0, $max=0){
 
-    Нужно заполнить массив 5 на 7 случайными уникальными числами от 1 до 1000.
-    Вывести получившийся массив и суммы по строкам и по столбцам.
+        $rangeSize = $max - $min;
+        if($rangeSize < $this->rowsSize * $this->columnsSize){
+            $max = $min + $this->rowsSize * $this->columnsSize;
+        }
 
-    $range гарантированно возвращает вектор где x < y для корректной работы mt_rand
-    Далее проверяем хватит ли диапазона в векторе, чтоб заполнить всю таблицу (compareValidVectorByTableSize)
-    прогоняем 2 цикла (строки и столбцы) для генерации массива и назначаем в каждую ячейку уникальное рандомное
-    значение через объект UniqueArrayDataChecker который гарантированно вернет нам уникальное значение;
+        $randValues = range($min, $max);
+        shuffle($randValues);
 
-    */
+        $i = 0;
+        for($row = 0; $row < $this->rowsSize; $row++){
+            for($col = 0; $col < $this->columnsSize; $col++){
+                $table[$row][$col] = $randValues[$i];
+                $i++;
+            }
+        }
+
+        return $table ?? [];
+
+    }
 
 
     public function generateUniqueNumbers(RandomRangeFromMinToMax $range) : array{
